@@ -35,6 +35,55 @@ import nestedRouter from './modules/nested'
 **/
 export const constantRouterMap = [
   {
+    path: '',
+    component: Layout,
+    redirect: 'dashboard',
+    children: [
+      {
+        path: 'dashboard',
+        component: () => import('@/views/dashboard/index'),
+        name: 'Dashboard',
+        meta: { title: 'dashboard', icon: 'dashboard', noCache: true, affix: true }
+      }
+    ]
+  },
+  {
+    path: '/user',
+    component: Layout,
+    children: [
+      {
+        path: 'index',
+        component: () => import('@/views/user/index'),
+        name: 'user',
+        meta: { title: '用户管理', icon: 'user' }
+      }
+    ]
+  },
+  {
+    path: '/enterprise',
+    component: Layout,
+    children: [
+      {
+        path: 'index',
+        component: () => import('@/views/enterprise/index'),
+        name: 'enterprise',
+        meta: { title: '企业管理', icon: 'peoples' }
+      }
+    ]
+  },
+  {
+    path: '/assessment',
+    component: Layout,
+    children: [
+      {
+        path: 'index',
+        component: () => import('@/views/assessment/index'),
+        name: 'assessment',
+        meta: { title: '测评管理', icon: 'clipboard' }
+      }
+    ]
+  },
+  {
     path: '/redirect',
     component: Layout,
     hidden: true,
@@ -64,19 +113,6 @@ export const constantRouterMap = [
     path: '/401',
     component: () => import('@/views/errorPage/401'),
     hidden: true
-  },
-  {
-    path: '',
-    component: Layout,
-    redirect: 'dashboard',
-    children: [
-      {
-        path: 'dashboard',
-        component: () => import('@/views/dashboard/index'),
-        name: 'Dashboard',
-        meta: { title: 'dashboard', icon: 'dashboard', noCache: true, affix: true }
-      }
-    ]
   },
   {
     path: '/documentation',
@@ -196,7 +232,6 @@ export const asyncRouterMap = [
       }
     ]
   },
-
   {
     path: '/tab',
     component: Layout,
